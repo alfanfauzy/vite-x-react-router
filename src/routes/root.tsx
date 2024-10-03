@@ -34,10 +34,10 @@ export default function Root() {
     new URLSearchParams(navigation.location.search).has("q");
 
   useEffect(() => {
-    if (q.length > 0 && q !== null) {
+    if (q && q?.length > 0 && q !== null) {
       document.title = `Searches for ${q}`;
     } else {
-      document.title = `Vite + React Router`;
+      document.title = "Vite + React Router";
     }
 
     document.getElementById("q").value = q;

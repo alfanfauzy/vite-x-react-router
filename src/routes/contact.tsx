@@ -1,5 +1,6 @@
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "../contacts";
+import { useEffect } from "react";
 
 export async function action({ request, params }) {
   const formData = await request.formData();
@@ -21,6 +22,11 @@ export async function loader({ params }) {
 
 const Contact = () => {
   const { contact } = useLoaderData();
+
+  useEffect(() => {
+    document.title = `${contact.first} ${contact.last} Contact`;
+  }, [contact]);
+
   return (
     <div id="contact">
       <div>
